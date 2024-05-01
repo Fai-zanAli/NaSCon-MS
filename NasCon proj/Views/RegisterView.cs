@@ -122,19 +122,24 @@ namespace NasCon_proj
         }
 
         // Validate email format
+        // private bool IsValidEmail(string email)
+        // {
+        //     try
+        //     {
+        //         var addr = new System.Net.Mail.MailAddress(email);
+        //         return addr.Address == email && (email.EndsWith("@nu.edu.pk") || email.EndsWith("@domain.com"));
+        //     }
+        //     catch
+        //     {
+        //         return false;
+        //     }
+        // }
+
         private bool IsValidEmail(string email)
         {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email && (email.EndsWith("@nu.edu.pk") || email.EndsWith("@domain.com"));
-            }
-            catch
-            {
-                return false;
-            }
+            string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+            return Regex.IsMatch(email, emailPattern);
         }
-
 
         private void label4_Click(object sender, EventArgs e)
         {
